@@ -6,8 +6,8 @@ module Paperclip
       if defined? Rails::Railtie
         require 'rails'
         class Railtie < Rails::Railtie
-          initializer 'paperclip_meta.insert_into_active_record' do
-            ActiveSupport.on_load :active_record do
+          initializer 'paperclip_meta.insert_into_attachment' do
+            ActiveSupport.on_load :after_initialize do
               Paperclip::Meta::Railtie.insert
             end
           end
